@@ -1,6 +1,6 @@
 import cv2
 
-# Carrega o classificador pré-treinado para detecção de rostos
+# Carrega o classificador para identificar rostos
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 
 # Inicia a captura de vídeo da webcam
@@ -10,13 +10,13 @@ while True:
     # Captura um frame
     ret, frame = cap.read()
 
-    # Converte para escala de cinza para melhor detecção
+    # Converte para escala de cinza
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
-    # Detecta rostos na imagem
+    # Identifica rostos na imagem
     faces = face_cascade.detectMultiScale(gray, 1.3, 5)
 
-    # Desenha um retângulo ao redor de cada rosto detectado
+    # Desenha um retângulo ao redor de cada rosto indentificado
     for (x,y,w,h) in faces:
         cv2.rectangle(frame, (x,y), (x+w,y+h), (255,0,0), 2)
 
